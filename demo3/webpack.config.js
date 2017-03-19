@@ -38,7 +38,8 @@ module.exports = {
         }),
         new OpenBrowserPlugin({
             url: 'http://localhost:8080'
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()//热加载插件
     ],
 
     devServer: {
@@ -46,6 +47,7 @@ module.exports = {
         // port: '3002',//监听端口
         // colors: true,//终端中输出结果为彩色
         historyApiFallback: true,//不跳转
-        inline: true//实时刷新
+        inline: true,//实时刷新
+        hot:true
     }
 }
