@@ -8,3 +8,7 @@
 ## hrm-react 官网实例热更新
 ## HelloReact 一个简单的小实例（react）
 ### 运行 npm run dev后 输入http://localhost:8080/
+## 
+### vue_demo1 (vue2+webpack)
+### 执行 npm install 。安装依赖
+### npm run dev 。
