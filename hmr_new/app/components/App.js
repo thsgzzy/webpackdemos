@@ -2,11 +2,9 @@
  * Created by a1 on 17/3/19.
  */
 import React from 'react';
-import styles from './App.css';
-
 const App = () => (
-    <div className={styles.app}>
-        <h2>Hello,3333</h2>
+    <div>
+        <h2>Hellosdddb,</h2>
     </div>
 );
 
