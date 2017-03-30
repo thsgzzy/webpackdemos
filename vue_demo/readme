@@ -1,0 +1,9 @@
+dev:开发目录
+dist：发布目录
+build：调试目录
+src：源码目录
+    controllers:页面控制器
+    models：单独定义的Models，用于数据的获取
+    stores：单独定义的Stores，用于数据缓存
+    asstes：静态资源
+    vstore：Vuex Store
