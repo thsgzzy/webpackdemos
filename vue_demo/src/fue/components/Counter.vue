@@ -20,6 +20,7 @@
         ]),
 
         methods: mapActions([
+            //// 映射 this.increment() 为 this.$store.dispatch('increment')
             'increment',
             'decrement'
         ])
