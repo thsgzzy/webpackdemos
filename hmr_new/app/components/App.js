@@ -4,7 +4,7 @@
 import React from 'react';
 const App = () => (
     <div>
-        <h2>Hellosdddb,</h2>
+        <h2>Hell,</h2>
     </div>
 );
 
