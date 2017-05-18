@@ -4,7 +4,8 @@
       <!--left-->
       <div class="menu-wrapper" ref="menuWrapper">
         <ul>
-          <li v-for="(item,index) in goods" class="menu-item" @click="selectMenu(index,$event)">
+          <li v-for="(item,index) in goods" class="menu-item" :class="{'current':currentIndex===index}"
+              @click="selectMenu(index,$event)">
             <span class="text">{{item.name}}</span>
           </li>
         </ul>
@@ -54,10 +55,22 @@
           //在这个函数中调用以防内容还未加载完就执行，获取不到元素的高度导致无法滑动
           this.$nextTick(() => {
             this._initScroll();
-//            this._calculateHeight();
+            this._calculateHeight();
           });
         }
       })
+    },
+    computed: {
+      currentIndex(){
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height1 = this.listHeight[i];
+          let height2 = this.listHeight[i + 1];
+          if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+            return i;
+          }
+        }
+        return 0;
+      }
     },
     methods: {
 
@@ -74,11 +87,12 @@
       _initScroll(){
         //首先要使点击有效，因为 better-scroll将默认事件都阻止了
         this.menuScroll = new BScroll(this.$refs.menuWrapper, {click: true});
-        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {click: true,});
+        //probeType 有效值：1，2，3 调节在scroll事件触发中探针的活跃度或者频率 数值越高表示更活跃的探测。探针活跃度越高对CPU的影响就越大。
+        this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {click: true, probeType: 3});
         //实现左边联动，则必须要监控 “scroll”事件，获取其高度
-//        this.foodsScroll.on('scroll', (pos) => {
-//          this.scrollY = Math.abs(Math.round(pos.y));
-//        });
+        this.foodsScroll.on('scroll', (pos) => {
+          this.scrollY = Math.abs(Math.round(pos.y));
+        });
       },
       _calculateHeight() {
         let foodList = this.$refs.foodList;
@@ -110,6 +124,14 @@
     flex: 0 0 80px;
     width: 80px;
     background: #f3f5f7
+  }
+
+  .menu-wrapper .current {
+    position: relative;
+    z-index: 10;
+    background: #2a6496;
+    font-weight: 700;
+    margin-top: -1px;
   }
 
   .menu-item {
