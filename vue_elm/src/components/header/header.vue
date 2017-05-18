@@ -25,6 +25,7 @@
     </div>
 
     <div class="bulletin-wrapper" @click="showDetail">
+      <span class="bulletin-title"></span>
       <span class="bulletin-text">{{seller.bulletin}}</span>
       <i class="icon-keyboard_arrow_right"></i>
     </div>
@@ -237,6 +238,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     background: rgba(7, 17, 27, 0.2);
+  }
+
+  .bulletin-title {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8px;
+    width: 22px;
+    height: 12px;
+    bg-image('bulletin');
+    background-size: 22px 12px;
+    background-repeat: no-repeat;
   }
 
   .bulletin-text {
